@@ -367,6 +367,12 @@ declare module '@illgrenoble/guacamole-common-js' {
      * @see Guacamole.HTTPTunnel
      */
     class Tunnel {
+        static INTERNAL_DATA_OPCODE: string;
+        static State: any;
+
+
+        uuid: string;
+
 
         /**
          * The current state of this tunnel.
@@ -455,6 +461,11 @@ declare module '@illgrenoble/guacamole-common-js' {
          * @param {String} tunnelURL The URL of the WebSocket tunneling service.
          */
         constructor(tunnelURL: string);
+    }
+
+
+    class SocketIOTunnel extends Tunnel {
+        constructor(url: string);
     }
 
     /**
