@@ -7,8 +7,8 @@
   "scripts": {
     "build": "node build"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Jamie Hall <hall@ill.eu>",
+  "license": "Apache-2.0",
   "files": [
     "LICENSE",
     "guacamole.js",
@@ -18,9 +18,8 @@
   "keywords": [
     "guacamole"
   ],
-  "author": "Jamie Hall <hall@ill.eu>",
-  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ILLGrenoble/guacamole-common-js/issues"
-  },"homepage": "https://github.com/ILLGrenoble/guacamole-common-js"
+  },
+  "homepage": "https://github.com/ILLGrenoble/guacamole-common-js"
 }

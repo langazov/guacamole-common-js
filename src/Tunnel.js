@@ -1272,9 +1272,15 @@ Guacamole.StaticHTTPTunnel = function StaticHTTPTunnel(url, crossDomain, extraTu
 
 Guacamole.StaticHTTPTunnel.prototype = new Guacamole.Tunnel();
 
-
-
-Guacamole.SocketIOTunnel = function(tunnelURL) {
+/**
+ * Guacamole Tunnel implemented over SocketIO
+ * 
+ * @constructor
+ * @augments Guacamole.Tunnel
+ * @param {String} tunnelURL The URL of the SocketIO connection
+ * @param {String} tunnelURL The SocketIO event channel to receive and send data
+ */
+Guacamole.SocketIOTunnel = function(tunnelURL, eventChannel) {
 
     /**
      * Reference to this SocketIO tunnel.
@@ -1283,7 +1289,7 @@ Guacamole.SocketIOTunnel = function(tunnelURL) {
     var tunnel = this;
 
     /**
-     * The WebSocket used by this tunnel.
+     * The SocketIO connection used by this tunnel.
      * @private
      */
     var socket = null;
@@ -1340,7 +1346,6 @@ Guacamole.SocketIOTunnel = function(tunnelURL) {
 
     }
 
-
     this.sendMessage = function(elements) {
         // Do not attempt to send messages if not connected
         if (tunnel.state !== Guacamole.Tunnel.State.OPEN)
@@ -1372,7 +1377,7 @@ Guacamole.SocketIOTunnel = function(tunnelURL) {
 
         // Final terminator
         message += ";";
-        socket.emit('display', message);
+        socket.emit(eventChannel, message);
 
     };
 
@@ -1385,8 +1390,8 @@ Guacamole.SocketIOTunnel = function(tunnelURL) {
 
         // Connect socket
         var connectionOptions =  {
-            "force new connection" : true,
-            "reconnection": false
+            'force new connection' : true,
+            'reconnection': false
         }
 
         socket = io(tunnelURL + '?' + data, connectionOptions);
@@ -1399,7 +1404,7 @@ Guacamole.SocketIOTunnel = function(tunnelURL) {
             close_tunnel(new Guacamole.Status(Guacamole.Status.Code.SERVER_ERROR, "Closed connection"));
         });
        
-        socket.on('display', function(message) {
+        socket.on(eventChannel, function(message) {
             reset_timeout();
             var startIndex = 0;
             var elementEnd;
