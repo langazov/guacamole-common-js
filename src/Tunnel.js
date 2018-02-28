@@ -1280,7 +1280,7 @@ Guacamole.StaticHTTPTunnel.prototype = new Guacamole.Tunnel();
  * @param {String} tunnelURL The URL of the SocketIO connection
  * @param {String} tunnelURL The SocketIO event channel to receive and send data
  */
-Guacamole.SocketIOTunnel = function(tunnelURL, eventChannel) {
+Guacamole.SocketIOTunnel = function(tunnelURL, connectionOptions, eventChannel) {
 
     /**
      * Reference to this SocketIO tunnel.
@@ -1387,15 +1387,9 @@ Guacamole.SocketIOTunnel = function(tunnelURL, eventChannel) {
 
         // Mark the tunnel as connecting
         tunnel.setState(Guacamole.Tunnel.State.CONNECTING);
-
-        // Connect socket
-        var connectionOptions =  {
-            'force new connection' : true,
-            'reconnection': false
-        }
-
-        socket = io(tunnelURL + '?' + data, connectionOptions);
-       
+        connectionOptions['query'] = data;
+        socket = io(tunnelURL, connectionOptions);
+   
         socket.on('connect', function() {
             reset_timeout();
         });
@@ -1474,6 +1468,9 @@ Guacamole.SocketIOTunnel = function(tunnelURL, eventChannel) {
         close_tunnel(new Guacamole.Status(Guacamole.Status.Code.SUCCESS, "Manually closed."));
     };
     
+    this.getSocket = function() {
+        return socket;
+    }
 }
 
 Guacamole.SocketIOTunnel.prototype = new Guacamole.Tunnel();

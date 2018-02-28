@@ -644,7 +644,11 @@ declare module '@illgrenoble/guacamole-common-js' {
 
 
     class SocketIOTunnel extends Tunnel {
-        constructor(url: string, eventChannel: string);
+        constructor(url: string, connectionOptions: any, eventChannel: string);
+        /** 
+         * Return the socketio socket
+         */
+        getSocket(): any;
     }
 
     /**
