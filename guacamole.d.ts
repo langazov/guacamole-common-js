@@ -1,4 +1,4 @@
-declare module '@illgrenoble/guacamole-common-js' {
+declare module '@langazov/guacamole-common-js' {
 
 
     /**

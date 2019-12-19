@@ -1,6 +1,6 @@
 {
-  "name": "@illgrenoble/guacamole-common-js",
-  "version": "0.0.1",
+  "name": "@langazov/guacamole-common-js",
+  "version": "0.0.3",
   "description": "Guacamole common js as an NPM module",
   "main": "guacamole.js",
   "types": "guacamole.d.ts",
@@ -21,6 +21,6 @@
   "author": "Jamie Hall <hall@ill.eu>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ILLGrenoble/guacamole-common-js/issues"
-  },"homepage": "https://github.com/ILLGrenoble/guacamole-common-js"
+    "url": "https://github.com/langazov/guacamole-common-js/issues"
+  },"homepage": "https://github.com/langazov/guacamole-common-js"
 }
