@@ -6042,7 +6042,7 @@ Guacamole.Keyboard = function(element) {
         if (interpret_events())
             e.preventDefault();
 
-    }, {passive: false});
+    }, true);
 
     // When key pressed
     element.addEventListener("keypress", function(e) {
