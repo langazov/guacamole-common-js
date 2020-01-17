@@ -4996,17 +4996,6 @@ Guacamole.JSONReader = function guacamoleJSONReader(stream) {
 };
 
 
-
-var Guacamole = Guacamole || {};
-
-/**
- * Provides cross-browser and cross-keyboard keyboard for a specific element.
- * Browser and keyboard layout variation is abstracted away, providing events
- * which represent keys as their corresponding X11 keysym.
- * 
- * @constructor
- * @param {Element} element The Element to use to provide keyboard events.
- */
 Guacamole.Keyboard = function(element) {
 
     /**
@@ -6065,7 +6054,7 @@ Guacamole.Keyboard = function(element) {
         if (interpret_events())
             e.preventDefault();
 
-    }, true);
+    }, {passive: false});
 
     // When key released
     element.addEventListener("keyup", function(e) {
@@ -6087,7 +6076,7 @@ Guacamole.Keyboard = function(element) {
         eventLog.push(keyupEvent);
         interpret_events();
 
-    }, true);
+    }, {passive: false});
 
 };
 

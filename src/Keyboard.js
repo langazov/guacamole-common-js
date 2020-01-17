@@ -13,12 +13,7 @@
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-
-var Guacamole = Guacamole || {};
-
+ * specific language governing permissions and limitationsaddEventListener
 /**
  * Provides cross-browser and cross-keyboard keyboard for a specific element.
  * Browser and keyboard layout variation is abstracted away, providing events
@@ -1062,7 +1057,7 @@ Guacamole.Keyboard = function(element) {
         if (interpret_events())
             e.preventDefault();
 
-    }, true);
+    }, {passive: false});
 
     // When key pressed
     element.addEventListener("keypress", function(e) {
@@ -1085,7 +1080,7 @@ Guacamole.Keyboard = function(element) {
         if (interpret_events())
             e.preventDefault();
 
-    }, true);
+    }, {passive: false});
 
     // When key released
     element.addEventListener("keyup", function(e) {
@@ -1107,7 +1102,7 @@ Guacamole.Keyboard = function(element) {
         eventLog.push(keyupEvent);
         interpret_events();
 
-    }, true);
+    }, {passive: false});
 
 };
 
