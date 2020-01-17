@@ -1,6 +1,6 @@
 {
   "name": "@langazov/guacamole-common-js",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "Guacamole common js as an NPM module",
   "main": "guacamole.js",
   "types": "guacamole.d.ts",

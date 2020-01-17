@@ -1062,7 +1062,7 @@ Guacamole.Keyboard = function(element) {
         if (interpret_events())
             e.preventDefault();
 
-    }, true);
+    }, {passive: false});
 
     // When key pressed
     element.addEventListener("keypress", function(e) {
@@ -1085,7 +1085,7 @@ Guacamole.Keyboard = function(element) {
         if (interpret_events())
             e.preventDefault();
 
-    }, true);
+    }, {passive: false});
 
     // When key released
     element.addEventListener("keyup", function(e) {
@@ -1107,7 +1107,7 @@ Guacamole.Keyboard = function(element) {
         eventLog.push(keyupEvent);
         interpret_events();
 
-    }, true);
+    }, {passive: false});
 
 };
 
